@@ -1,0 +1,85 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=1.5cm, bottom=1.5cm, left=2cm, right=2cm}
+
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{verse}
+\usepackage{multicol}
+\usepackage{enumitem}
+
+% Font Brittany (assicurati che il file esista in assets/fonts/)
+\newfontfamily{\brittany}{BrittanySignature}[
+  Path = assets/fonts/,
+  Extension = .ttf,
+  UprightFont = *
+]
+
+% Titolo personalizzato
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\brittany\Huge Libretto del Matrimonio}
+    \vspace{1cm}
+    {\brittany\LARGE Irene Bertelloni \& Davide Barbieri}
+    \vspace{0.5cm}
+    {\brittany\Large 7 Settembre 2025}
+  \end{center}
+  \thispagestyle{empty}
+}
+
+% Comandi per dialoghi
+\newcommand{\sacerdote}{\textbf{Sacerdote:}\quad\itshape}
+\newcommand{\assemblea}{\textbf{Assemblea:}\quad}
+\newcommand{\sposi}{\textbf{Sposi:}\quad\itshape}
+
+% Ambiente per dialoghi (nota: dialoghi con 'hi')
+\newlist{dialoghi}{description}{1}
+\setlist[dialoghi]{
+  font=\normalfont\itshape,
+  labelwidth=2cm,
+  leftmargin=2.5cm,
+  style=nextline
+}
+
+% Ambiente per strofe (rinominato da altverse per evitare conflitti)
+\newenvironment{mystrofe}{\itshape}{\par}
+
+% Ambiente per ritornelli (rinominato da chorus)
+\newenvironment{myritornello}
+  {\begin{multicols}{2}\itshape}
+  {\end{multicols}}
+
+
+ % SOSTITUISCI la definizione di chorus con:
+\newcommand{\ritornello}[1]{%
+  \begin{center}
+  \begin{minipage}{0.8\linewidth}
+  \begin{multicols}{2}
+  \itshape\centering
+  #1
+  \end{multicols}
+  \end{minipage}
+  \end{center}
+}
+
+\begin{document}
+
+\maketitle
+
+% --------------------------------------------------
+\section*{Ingresso degli sposi}
+\input{src/sections/ingresso}
+
+% --------------------------------------------------
+\section*{Liturgia della Parola}
+\input{src/sections/liturgia-parola}
+
+% --------------------------------------------------
+\section*{Rito del Matrimonio}
+\input{src/sections/rito-matrimonio}
+
+\end{document}
