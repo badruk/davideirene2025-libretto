@@ -27,6 +27,7 @@
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 % Comandi per dialoghi
+\newcommand{\tutti}{\textbf{Tutti:}\quad\itshape}
 \newcommand{\sacerdote}{\textbf{Sacerdote:}\quad\itshape}
 \newcommand{\assemblea}{\textbf{Assemblea:}\quad}
 \newcommand{\sposi}{\textbf{Sposi:}\quad\itshape}
@@ -46,20 +47,16 @@
 % Ambiente per strofe
 \newenvironment{mystrofe}{\itshape}{\par}
 
-% Ambiente per ritornelli
-\newenvironment{myritornello}
-  {\begin{multicols}{2}\itshape}
-  {\end{multicols}}
 
 % Comando per ritornelli
 \newcommand{\ritornello}[1]{%
   \begin{center}
-  \begin{minipage}{0.8\linewidth}
-  \begin{multicols}{2}
-  \itshape\centering
+  % \begin{minipage}{0.8\linewidth}
+  % \begin{multicols}{1}
+  % \itshape\centering
   #1
-  \end{multicols}
-  \end{minipage}
+  % \end{multicols}
+  % \end{minipage}
   \end{center}
 }
 
@@ -69,12 +66,35 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[C]{\thepage}
 
+\newcommand{\lettura}[3]{
+  \begin{center}
+    \textbf{\textsc{#1}}{ (\textsc{#2})}\\
+
+    \vspace{0.5cm}
+
+    \begin{minipage}{0.9\textwidth}
+      \itshape #3
+    \end{minipage}
+  
+  \end{center}
+  
+  \vspace{0.5cm}
+
+  \begin{flushright}
+    Parola di Dio
+  \end{flushright}
+  
+  \begin{dialoghi}
+    \item[Tutti] Rendiamo grazie a Dio.
+  \end{dialoghi}
+}
+
 \begin{document}
 
 
 % Titolo
 \begin{center}
-{\brittany\Huge Celebrazione del Sacramento del Matrimonio}
+{\Huge Celebrazione del Sacramento del Matrimonio}
 
 \vspace{1cm}
 
@@ -86,7 +106,7 @@
 
 \vspace{0.5cm}
 
-{\brittany\Large Parrocchia di San Pio X - Massa}
+{\Large Parrocchia di San Pio X - Massa}
 
 \vspace{0.5cm}
 
@@ -98,74 +118,45 @@
 \newpage
 
 % --------------------------------------------------
-\section*{Ingresso degli sposi}
 \input{src/sections/01-ingresso}
 
 % --------------------------------------------------
-\section*{Riti di introduzione}
 \input{src/sections/02-riti-iniziali}
 
 % --------------------------------------------------
-\section*{Memoria del battesimo}
 \input{src/sections/03-memoria-battesimo}
 
 % --------------------------------------------------
-\section*{Gloria a Dio}
 \input{src/sections/04-gloria-dio}
 
 % --------------------------------------------------
-\section*{Liturgia della Parola}
 \input{src/sections/05-liturgia-parola}
 
 % --------------------------------------------------
-\section*{Rito del Matrimonio}
 \input{src/sections/06-rito-matrimonio}
 
 % --------------------------------------------------
-\section*{Preghiera dei Fedeli}
 \input{src/sections/07-preghiera-fedeli}
 
 % --------------------------------------------------
-\section*{Professione di Fede}
 \input{src/sections/08-professione-fede}
 
 % --------------------------------------------------
-\section*{Liturgia Eucaristica}
 \input{src/sections/09-liturgia-eucaristica}
 
 % --------------------------------------------------
-\section*{Rito della Comunione}
 \input{src/sections/10-rito-comunione}
 
 % --------------------------------------------------
-\section*{Articoli codice civile}
 \input{src/sections/11-articoli-civili}
 
 
 % --------------------------------------------------
-\section*{Riti di Conclusione}
 \input{src/sections/12-riti-conclusione}
 
 
 % --------------------------------------------------
-\section*{Uscita}
 \input{src/sections/13-uscita}
 
-
-
-
-
-
- % --------------------------------------------------
-% \section*{Rito di Introduzione}
-% \input{src/sections/02-rito-introduzione}
-
-% % --------------------------------------------------
-% \section*{Liturgia della Parola}
-% \input{src/sections/03-liturgia-parola}
-
-% % --------------------------------------------------
-% \section*{Rito del Matrimonio}
-% \input{src/sections/04-rito-matrimonio}
 
 \end{document}
