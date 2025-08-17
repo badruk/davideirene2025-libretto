@@ -11,32 +11,30 @@
 \usepackage{verse}
 \usepackage{multicol}
 \usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
 
-% Font Brittany (assicurati che il file esista in assets/fonts/)
+% Font Brittany
 \newfontfamily{\brittany}{BrittanySignature}[
   Path = assets/fonts/,
   Extension = .ttf,
   UprightFont = *
 ]
 
-% Titolo personalizzato
-\renewcommand{\maketitle}{%
-  \begin{center}
-    {\brittany\Huge Libretto del Matrimonio}
-    \vspace{1cm}
-    {\brittany\LARGE Irene Bertelloni \& Davide Barbieri}
-    \vspace{0.5cm}
-    {\brittany\Large 7 Settembre 2025}
-  \end{center}
-  \thispagestyle{empty}
-}
+% Stili per titoli
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 % Comandi per dialoghi
 \newcommand{\sacerdote}{\textbf{Sacerdote:}\quad\itshape}
 \newcommand{\assemblea}{\textbf{Assemblea:}\quad}
 \newcommand{\sposi}{\textbf{Sposi:}\quad\itshape}
+\newcommand{\lettore}{\textbf{Lettore:}\quad\itshape}
+\newcommand{\sposo}{\textbf{Davide:}\quad\itshape}
+\newcommand{\sposa}{\textbf{Irene:}\quad\itshape}
 
-% Ambiente per dialoghi (nota: dialoghi con 'hi')
+% Ambiente per dialoghi
 \newlist{dialoghi}{description}{1}
 \setlist[dialoghi]{
   font=\normalfont\itshape,
@@ -45,16 +43,15 @@
   style=nextline
 }
 
-% Ambiente per strofe (rinominato da altverse per evitare conflitti)
+% Ambiente per strofe
 \newenvironment{mystrofe}{\itshape}{\par}
 
-% Ambiente per ritornelli (rinominato da chorus)
+% Ambiente per ritornelli
 \newenvironment{myritornello}
   {\begin{multicols}{2}\itshape}
   {\end{multicols}}
 
-
- % SOSTITUISCI la definizione di chorus con:
+% Comando per ritornelli
 \newcommand{\ritornello}[1]{%
   \begin{center}
   \begin{minipage}{0.8\linewidth}
@@ -66,20 +63,109 @@
   \end{center}
 }
 
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
 \begin{document}
 
-\maketitle
+
+% Titolo
+\begin{center}
+{\brittany\Huge Celebrazione del Sacramento del Matrimonio}
+
+\vspace{1cm}
+
+{\brittany\LARGE Davide e Irene}
+
+\vspace{0.5cm}
+
+% \includegraphics[width=4.25in, height=4.25in]{image1}
+
+\vspace{0.5cm}
+
+{\brittany\Large Parrocchia di San Pio X - Massa}
+
+\vspace{0.5cm}
+
+{\brittany\Large 7 Settembre 2025}
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage
 
 % --------------------------------------------------
 \section*{Ingresso degli sposi}
-\input{src/sections/ingresso}
+\input{src/sections/01-ingresso}
+
+% --------------------------------------------------
+\section*{Riti di introduzione}
+\input{src/sections/02-riti-iniziali}
+
+% --------------------------------------------------
+\section*{Memoria del battesimo}
+\input{src/sections/03-memoria-battesimo}
+
+% --------------------------------------------------
+\section*{Gloria a Dio}
+\input{src/sections/04-gloria-dio}
 
 % --------------------------------------------------
 \section*{Liturgia della Parola}
-\input{src/sections/liturgia-parola}
+\input{src/sections/05-liturgia-parola}
 
 % --------------------------------------------------
 \section*{Rito del Matrimonio}
-\input{src/sections/rito-matrimonio}
+\input{src/sections/06-rito-matrimonio}
+
+% --------------------------------------------------
+\section*{Preghiera dei Fedeli}
+\input{src/sections/07-preghiera-fedeli}
+
+% --------------------------------------------------
+\section*{Professione di Fede}
+\input{src/sections/08-professione-fede}
+
+% --------------------------------------------------
+\section*{Liturgia Eucaristica}
+\input{src/sections/09-liturgia-eucaristica}
+
+% --------------------------------------------------
+\section*{Rito della Comunione}
+\input{src/sections/10-rito-comunione}
+
+% --------------------------------------------------
+\section*{Articoli codice civile}
+\input{src/sections/11-articoli-civili}
+
+
+% --------------------------------------------------
+\section*{Riti di Conclusione}
+\input{src/sections/12-riti-conclusione}
+
+
+% --------------------------------------------------
+\section*{Uscita}
+\input{src/sections/13-uscita}
+
+
+
+
+
+
+ % --------------------------------------------------
+% \section*{Rito di Introduzione}
+% \input{src/sections/02-rito-introduzione}
+
+% % --------------------------------------------------
+% \section*{Liturgia della Parola}
+% \input{src/sections/03-liturgia-parola}
+
+% % --------------------------------------------------
+% \section*{Rito del Matrimonio}
+% \input{src/sections/04-rito-matrimonio}
 
 \end{document}
