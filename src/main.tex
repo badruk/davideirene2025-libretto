@@ -27,25 +27,25 @@
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 % Comandi per dialoghi
-\newcommand{\tutti}{\textbf{Tutti:}\quad\itshape}
-\newcommand{\sacerdote}{\textbf{Sacerdote:}\quad\itshape}
-\newcommand{\assemblea}{\textbf{Assemblea:}\quad}
-\newcommand{\sposi}{\textbf{Sposi:}\quad\itshape}
-\newcommand{\lettore}{\textbf{Lettore:}\quad\itshape}
-\newcommand{\sposo}{\textbf{Davide:}\quad\itshape}
-\newcommand{\sposa}{\textbf{Irene:}\quad\itshape}
+\newcommand{\tutti}{\underline{Tutti:}\quad}
+\newcommand{\sacerdote}{\underline{Sacerdote:}\quad}
+\newcommand{\assemblea}{\underline{Assemblea:}\quad}
+\newcommand{\sposi}{\underline{Sposi:}\quad}
+\newcommand{\lettore}{\underline{Lettore:}\quad}
+\newcommand{\sposo}{\underline{Davide:}\quad}
+\newcommand{\sposa}{\underline{Irene:}\quad}
 
 % Ambiente per dialoghi
 \newlist{dialoghi}{description}{1}
 \setlist[dialoghi]{
-  font=\normalfont\itshape,
+  font=\normalfont,
   labelwidth=2cm,
   leftmargin=2.5cm,
   style=nextline
 }
 
 % Ambiente per strofe
-\newenvironment{mystrofe}{\itshape}{\par}
+\newenvironment{mystrofe}{\centering \itshape}{\par}
 
 
 \newcommand{\ritornello}[1]{%
@@ -53,6 +53,13 @@
   \begin{center}
     \itshape #1%
   \end{center}%
+  \par % Chiude correttamente il paragrafo
+}
+
+
+\newcommand{\professione}[1]{%
+  \par\noindent % Assicura che non ci siano rientri indesiderati
+    #1%
   \par % Chiude correttamente il paragrafo
 }
 
@@ -80,7 +87,7 @@
   \end{flushright}
   
   \begin{dialoghi}
-    \item[Tutti] Rendiamo grazie a Dio.
+    \item[\underline{Tutti:}] Rendiamo grazie a Dio.
   \end{dialoghi}
 }
 
@@ -102,7 +109,7 @@
   \end{flushright}
   
   \begin{dialoghi}
-    \item[Tutti] Rendiamo grazie a Dio.
+    \item[\underline{Tutti:}] Rendiamo grazie a Dio.
   \end{dialoghi}
 }
 
