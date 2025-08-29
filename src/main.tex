@@ -1,3 +1,12 @@
+% Davide e Irene grande
+% Titolo centrato verticalmente
+% Inserire logo prima pagina
+% Gestione lettura su più pagine
+% Amen professione di Fede
+% Pagina 1 all'inizio del primo canto
+% 1 cor 13
+
+
 \documentclass[10pt, a5paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -20,6 +29,18 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 
+
+
+% Sezione più piccola
+\titleformat{\section}
+  {\centering\normalfont\normalsize\bfseries} % Stile: grandezza, font, grassetto
+  {\thesection}{1em}{}         % Numerazione, spaziatura
+
+% Sottosezione più piccola
+\titleformat{\subsection}
+  {\centering\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
 % Font Brittany
 \newfontfamily{\brittany}{BrittanySignature}[
   Path = assets/fonts/,
@@ -27,13 +48,10 @@
   UprightFont = *
 ]
 
-% Stili per titoli
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-
 % Comandi per dialoghi
 \newcommand{\tutti}{\underline{Tutti:}\quad}
 \newcommand{\sacerdote}{\underline{Sacerdote:}\quad}
+\newcommand{\sacerdotetutti}{\underline{Sacerdote - Tutti:}\quad}
 \newcommand{\assemblea}{\underline{Tutti:}\quad}
 \newcommand{\sposi}{\underline{Sposi:}\quad}
 \newcommand{\lettore}{\underline{Lettore:}\quad}
@@ -45,7 +63,7 @@
 \setlist[dialoghi]{
   font=\normalfont,
   labelwidth=2cm,
-  leftmargin=2.5cm,
+  leftmargin=2.25cm,
   style=nextline
 }
 
@@ -56,7 +74,7 @@
 \newcommand{\ritornello}[1]{%
   \par\noindent % Assicura che non ci siano rientri indesiderati
   \begin{center}
-    \itshape #1%
+    RIT: \itshape #1%
   \end{center}%
   \par % Chiude correttamente il paragrafo
 }
@@ -81,7 +99,7 @@
     \vspace{0.2cm}
 
     \begin{minipage}{0.9\textwidth}
-      \itshape #3
+      #3
     \end{minipage}
   
   \end{center}
@@ -103,7 +121,7 @@
     \vspace{0.2cm}
 
     \begin{minipage}{0.9\textwidth}
-      \itshape #3
+      #3
     \end{minipage}
   
   \end{center}
@@ -118,33 +136,17 @@
   \end{dialoghi}
 }
 
+% Font principale: Garamond
+\setmainfont{EB Garamond Medium}[
+  Ligatures=TeX,
+  Numbers=OldStyle
+]
+
 \begin{document}
 
+\input{src/sections/00-titolo}
 
-% Titolo
-\begin{center}
-{\Huge Celebrazione del Sacramento del Matrimonio}
-
-\vspace{1cm}
-
-{\brittany\LARGE Davide e Irene}
-
-\vspace{0.5cm}
-
-% \includegraphics[width=4.25in, height=4.25in]{image1}
-
-\vspace{0.5cm}
-
-{\Large Parrocchia di San Pio X - Massa}
-
-\vspace{0.5cm}
-
-{\brittany\Large 7 Settembre 2025}
-\end{center}
-
-\thispagestyle{empty}
-
-\newpage
+\restoregeometry % ritorna alle impostazioni originali
 
 % --------------------------------------------------
 \input{src/sections/01-ingresso}
