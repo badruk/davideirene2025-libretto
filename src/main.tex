@@ -16,6 +16,9 @@
   bindingoffset=0.5cm % spazio extra per la rilegatura
 ]{geometry}
 
+\usepackage{tcolorbox}
+
+
 \usepackage{fontspec}
 \usepackage{xcolor}
 \usepackage{lipsum}
@@ -30,12 +33,12 @@
 
 % Sezione più piccola
 \titleformat{\section}
-  {\centering\normalfont\normalsize\bfseries} % Stile: grandezza, font, grassetto
+  {\centering\normalfont\large\bfseries} % Stile: grandezza, font, grassetto
   {\thesection}{1em}{}         % Numerazione, spaziatura
 
 % Sottosezione più piccola
 \titleformat{\subsection}
-  {\centering\normalfont\normalsize\bfseries}
+  {\centering\normalfont\large\bfseries}
   {\thesubsection}{1em}{}
 
 % Font Brittany
@@ -71,7 +74,7 @@
 \newcommand{\ritornello}[1]{%
   \par\noindent % Assicura che non ci siano rientri indesiderati
   \begin{center}
-    RIT: \itshape #1%
+    RIT. \itshape #1%
   \end{center}%
   \par % Chiude correttamente il paragrafo
 }
@@ -89,38 +92,36 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[C]{\thepage}
 
-\newcommand{\lettura}[3]{
+\tcbuselibrary{breakable, skins}
+
+\newcommand{\lettura}[3]{%
   \begin{center}
-    \textbf{\textsc{#1}}{ (\textsc{#2})}\\
+    \textbf{\textsc{#1}}{ (\textit{#2})}\\[0.2cm]
 
-    \vspace{0.2cm}
-
-    \begin{minipage}{0.9\textwidth}
+    \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
       #3
-    \end{minipage}
-  
+    \end{tcolorbox}
   \end{center}
-  
 
   \begin{flushright}
     Parola di Dio
   \end{flushright}
-  
+
   \begin{dialoghi}
     \item[\underline{Tutti:}] Rendiamo grazie a Dio.
   \end{dialoghi}
 }
 
+
 \newcommand{\vangelo}[3]{
   \begin{center}
-    \textbf{\textsc{#1}}{ (\textsc{#2})}\\
+    \textbf{\textsc{#1}}{ (\textit{#2})}\\
 
     \vspace{0.2cm}
 
-    \begin{minipage}{0.9\textwidth}
+   \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
       #3
-    \end{minipage}
-  
+    \end{tcolorbox}
   \end{center}
   
 
