@@ -1,8 +1,5 @@
-% Inserire logo prima pagina
-% Amen professione di Fede
-% Pagina 1 all'inizio del primo canto
-% 1 cor 13
-
+% Logo ultima pagina
+% colore nella prima e ultima pagina
 
 \documentclass[11pt, a5paper]{article}
 \usepackage[utf8]{inputenc}
@@ -66,6 +63,15 @@
   leftmargin=2.2cm,
   style=nextline,
   noitemsep
+}
+
+% Ambiente per dialoghi
+\newlist{dialoghisalmo}{description}{1}
+\setlist[dialoghisalmo]{
+  font=\normalfont,
+  labelwidth=2cm,
+  leftmargin=2.2cm,
+  style=nextline,
 }
 
 % Ambiente per strofe
