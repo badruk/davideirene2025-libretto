@@ -4,10 +4,15 @@
 
 \newpage
 \thispagestyle{empty}
-\mbox{}   % pagina bianca 2
 
-\vfill
-	\begin{center}
-		\includegraphics[width=\textwidth]{src/assets/img/logo.svg}
-	\end{center}
-\vfill
+\noindent\makebox[\textwidth][c]{%
+  \vbox to \textheight{%
+    \vfill
+    \includegraphics[width=\textwidth]{src/assets/img/logo.pdf}%
+    \vfill
+  }%
+}
+
+
+\restoregeometry
+\clearpage

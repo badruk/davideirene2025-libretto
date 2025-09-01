@@ -1,7 +1,10 @@
 % Logo ultima pagina
 % colore nella prima e ultima pagina
 
+
 \documentclass[11pt, a5paper]{article}
+
+% --- Pacchetti base ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
@@ -13,39 +16,54 @@
   bindingoffset=0.5cm % spazio extra per la rilegatura
 ]{geometry}
 
-\usepackage{tcolorbox}
-
-
+% --- Font e grafica ---
 \usepackage{fontspec}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% --- Testo e impaginazione ---
 \usepackage{lipsum}
 \usepackage{verse}
 \usepackage{multicol}
 \usepackage{enumitem}
-\usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{svg}
 
-
-
-% Sezione più piccola
+% --- Formattazione titoli ---
 \titleformat{\section}
-  {\centering\normalfont\large\bfseries} % Stile: grandezza, font, grassetto
-  {\thesection}{1em}{}         % Numerazione, spaziatura
+  {\centering\normalfont\large\bfseries} % Sezione
+  {\thesection}{1em}{}
 
-% Sottosezione più piccola
 \titleformat{\subsection}
-  {\centering\normalfont\large\bfseries}
+  {\centering\normalfont\large\bfseries} % Sottosezione
   {\thesubsection}{1em}{}
 
-% Font Brittany
+% --- Font personalizzati ---
 \newfontfamily{\brittany}{BrittanySignature}[
   Path = assets/fonts/,
   Extension = .ttf,
   UprightFont = *
 ]
 
-% Comandi per dialoghi
+% --- Font principale ---
+\setmainfont{EB Garamond Medium}[
+  Ligatures=TeX,
+  Numbers=OldStyle
+]
+
+% --- Colore del matrimonio ---
+\definecolor{mymarriage}{HTML}{4e7568}
+
+% --- Intestazione e piè di pagina ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+% --- Comandi per dialoghi ---
 \newcommand{\tutti}{\underline{Tutti:}\quad}
 \newcommand{\sacerdote}{\underline{Sacerdote:}\quad}
 \newcommand{\sacerdotetutti}{\underline{Sacerdote - Tutti:}\quad}
@@ -55,7 +73,7 @@
 \newcommand{\sposo}{\underline{Davide:}\quad}
 \newcommand{\sposa}{\underline{Irene:}\quad}
 
-% Ambiente per dialoghi
+% --- Ambienti per dialoghi ---
 \newlist{dialoghi}{description}{1}
 \setlist[dialoghi]{
   font=\normalfont,
@@ -65,7 +83,6 @@
   noitemsep
 }
 
-% Ambiente per dialoghi
 \newlist{dialoghisalmo}{description}{1}
 \setlist[dialoghisalmo]{
   font=\normalfont,
@@ -74,33 +91,25 @@
   style=nextline,
 }
 
-% Ambiente per strofe
+% --- Ambiente per strofe ---
 \newenvironment{mystrofe}{\noindent\centering \itshape \par}
 
-
+% --- Comandi personalizzati ---
 \newcommand{\ritornello}[1]{%
-  \par\noindent % Assicura che non ci siano rientri indesiderati
+  \par\noindent
   \begin{center}
     RIT. \itshape #1%
   \end{center}%
-  \par % Chiude correttamente il paragrafo
+  \par
 }
-
 
 \newcommand{\professione}[1]{%
-  \par\noindent % Assicura che non ci siano rientri indesiderati
+  \par\noindent
     #1%
-  \par % Chiude correttamente il paragrafo
+  \par
 }
 
-% Intestazione e piè di pagina
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[C]{\thepage}
-
-\tcbuselibrary{breakable, skins}
-
+% --- Letture ---
 \newcommand{\lettura}[3]{%
   \begin{center}
     \textbf{\textsc{#1}}{ (\textit{#2})}\\[0.2cm]
@@ -119,19 +128,15 @@
   \end{dialoghi}
 }
 
-
-\newcommand{\vangelo}[3]{
+\newcommand{\vangelo}[3]{%
   \begin{center}
-    \textbf{\textsc{#1}}{ (\textit{#2})}\\
+    \textbf{\textsc{#1}}{ (\textit{#2})}\\[0.2cm]
 
-    \vspace{0.2cm}
-
-   \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
+    \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
       #3
     \end{tcolorbox}
   \end{center}
   
-
   \begin{flushright}
     Parola di Dio
   \end{flushright}
@@ -140,13 +145,6 @@
     \item[\underline{Tutti:}] Rendiamo grazie a Dio.
   \end{dialoghi}
 }
-
-% Font principale: Garamond
-\setmainfont{EB Garamond Medium}[
-  Ligatures=TeX,
-  Numbers=OldStyle
-]
-
 \begin{document}
 
 \input{src/sections/00-titolo}
@@ -186,10 +184,8 @@
 % --------------------------------------------------
 \input{src/sections/11-articoli-civili}
 
-
 % --------------------------------------------------
 \input{src/sections/12-riti-conclusione}
-
 
 % --------------------------------------------------
 \input{src/sections/13-uscita}
