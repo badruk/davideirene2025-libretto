@@ -1,0 +1,156 @@
+% Logo ultima pagina
+% colore nella prima e ultima pagina
+
+
+% \documentclass[15pt, a5paper]{article}
+\documentclass[fontsize=20pt, a5paper]{scrartcl} % <- This works perfectly
+
+
+
+% --- Pacchetti base ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage[a5paper, twoside,
+  inner=1cm, % margine interno (vicino alla piega)
+  outer=1cm, % margine esterno
+  top=1cm,
+  bottom=1cm,
+  bindingoffset=0.5cm % spazio extra per la rilegatura
+]{geometry}
+
+% --- Font e grafica ---
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% --- Testo e impaginazione ---
+\usepackage{lipsum}
+\usepackage{verse}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{svg}
+
+% --- Formattazione titoli ---
+\titleformat{\section}
+  {\centering\normalfont\large\bfseries} % Sezione
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\centering\normalfont\large\bfseries} % Sottosezione
+  {\thesubsection}{1em}{}
+
+% --- Colore del matrimonio ---
+\definecolor{mymarriage}{HTML}{4e7568}
+
+% --- Intestazione e piè di pagina ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+% --- Comandi per dialoghi ---
+\newcommand{\tutti}{\underline{Tutti:}\quad}
+\newcommand{\sacerdote}{\underline{Sacerdote:}\quad}
+\newcommand{\sacerdotetutti}{\underline{Sacerdote - Tutti:}\quad}
+\newcommand{\assemblea}{\underline{Tutti:}\quad}
+\newcommand{\sposi}{\underline{Sposi:}\quad}
+\newcommand{\lettore}{\underline{Lettore:}\quad}
+\newcommand{\sposo}{\underline{Davide:}\quad}
+\newcommand{\sposa}{\underline{Irene:}\quad}
+
+% --- Ambienti per dialoghi ---
+\newlist{dialoghi}{description}{1}
+\setlist[dialoghi]{
+  font=\normalfont,
+  labelwidth=2cm,
+  leftmargin=2.2cm,
+  style=nextline,
+  noitemsep
+}
+
+\newlist{dialoghisalmo}{description}{1}
+\setlist[dialoghisalmo]{
+  font=\normalfont,
+  labelwidth=2cm,
+  leftmargin=2.2cm,
+  style=nextline,
+}
+
+% --- Ambiente per strofe ---
+\newenvironment{mystrofe}{\noindent\centering \itshape \par}
+
+% --- Comandi personalizzati ---
+\newcommand{\ritornello}[1]{%
+  \par\noindent
+  \begin{center}
+    RIT. \itshape #1%
+  \end{center}%
+  \par
+}
+
+\newcommand{\professione}[1]{%
+  \par\noindent
+    #1%
+  \par
+}
+
+% --- Letture ---
+\newcommand{\lettura}[3]{%
+  \begin{center}
+    \textbf{\textsc{#1}}{ (\textit{#2})}\\[0.2cm]
+
+    \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
+      #3
+    \end{tcolorbox}
+  \end{center}
+
+  \begin{flushright}
+    Parola di Dio
+  \end{flushright}
+
+  \begin{dialoghi}
+    \item[\underline{Tutti:}] Rendiamo grazie a Dio.
+  \end{dialoghi}
+}
+
+\newcommand{\vangelo}[3]{%
+  \begin{center}
+    \textbf{\textsc{#1}}{ (\textit{#2})}\\[0.2cm]
+
+    \begin{tcolorbox}[enhanced, breakable, boxrule=0pt, colframe=white, colback=white, left=0pt, right=0pt, top=0pt, bottom=0pt]
+      #3
+    \end{tcolorbox}
+  \end{center}
+  
+  \begin{flushright}
+    Parola di Dio
+  \end{flushright}
+  
+  \begin{dialoghi}
+    \item[\underline{Tutti:}] Rendiamo grazie a Dio.
+  \end{dialoghi}
+}
+\begin{document}
+
+\textbf{S} [...] sia con voi sempre.
+
+\textbf{D} {Io Davide accolgo te, Irene, come mia sposa. Con la grazia di Cristo prometto di esserti fedele sempre, nella gioia e nel dolore, nella salute e nella malattia, e di amarti e onorarti tutti i giorni della mia vita.}
+
+\textbf{I} Io Irene accolgo te, Davide, come mio sposo. Con la grazia di Cristo prometto di esserti fedele sempre, nella gioia e nel dolore, nella salute e nella malattia, e di amarti e onorarti tutti i giorni della mia vita.
+
+\textbf{S}  Per Cristo nostro Signore. Amen.
+
+\textbf{D} {Irene, ricevi questo anello, segno del mio amore e della mia fedeltà. Nel nome del Padre, del Figlio e dello Spirito Santo.}
+
+\textbf{I} Davide, ricevi questo anello, segno del mio amore e della mia fedeltà. Nel nome del Padre, del Figlio e dello Spirito Santo.
+	
+\end{document}
+
+
+
+
